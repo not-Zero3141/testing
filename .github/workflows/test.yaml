@@ -1,0 +1,26 @@
+
+name: "Test"
+on:
+  pull_request:
+
+jobs:
+  okay:
+    name: "Okay"
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: slackapi/slack-github-action@v1.18.0
+        with:
+              payload: |
+                {
+                  "text": Test: ${{ github.event.pull_request.html_url }}",
+                  "blocks": [
+                    {
+                      "type": "section",
+                      "text": {
+                        "type": "mrkdwn",
+                        "text": "AAAAAA: ${{ github.event.pull_request.html_url }}"
+                      }
+                    }
+                  ]
+                }
+    
